@@ -1,3 +1,6 @@
+if (!window.alt1) alt1 = {};
+if (!window.a1lib) a1lib = {};
+
 const skillActions = {
   // Add more if you include new skills later
   Woodcutting: "Chop",
@@ -27,11 +30,34 @@ function showTask() {
 }
 
 let currentCount = 0;
+let quantity = 100; // ← or dynamically set via showTask()
+
 function incrementProgress() {
   if (currentCount < quantity) {
     currentCount++;
     document.getElementById("task-progress").innerText = `${currentCount}/${quantity}`;
+    document.getElementById("progress-bar-fill").style.width = `${(currentCount / quantity) * 100}%`;
   }
 }
+
+// 💡 Place your OCR function here:
+function trackProgressOCR() {
+  if (!window.alt1 || !alt1.captureSupport) {
+    alert("Alt1 is not running or capture is not supported.");
+    return;
+  }
+
+  const img = a1lib.captureHoldFullRs();
+  if (!img) return;
+
+  const ocrText = img.readText();
+  console.log("OCR Output:", ocrText);
+
+  if (ocrText.includes("You gain")) { // Adjust based on task type
+    incrementProgress();
+  }
+}
+
+setInterval(trackProgressOCR, 5000); // Scan every 5 seconds
 
 window.showTask = showTask;
