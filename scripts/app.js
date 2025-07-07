@@ -1,7 +1,7 @@
 const A1lib = require("alt1/base");
 
+// ===== Skill & Task Definitions =====
 const skillActions = {
-  // Add more if you include new skills later
   Woodcutting: "Chop",
   Fishing: "Catch",
   Mining: "Mine",
@@ -13,28 +13,25 @@ const skillTasks = {
   Mining: ["Coal Rocks", "Runeite Rocks"]
 };
 
+// ===== Global State =====
+let progress = 0;
+let goal = 100;
+
+// ===== Task Logic =====
 function showTask() {
   const skill = document.getElementById("skill-select").value;
   const tasks = skillTasks[skill];
   const task = tasks[Math.floor(Math.random() * tasks.length)];
 
-  // Add a randomized quantity between 100 and 400 (you can tweak this per skill)
-  const quantity = Math.floor(Math.random() * 301) + 100;
+  goal = Math.floor(Math.random() * 301) + 100; // 100–400
   progress = 0;
-  
-  const action = skillActions[skill] || "Do"; // fallback if not defined
-  
-  document.getElementById("task-overlay").innerText = `${action}  ${quantity} ${task}`;
-  document.getElementById("task-progress").innerText = `0/${quantity}`;
-  document.addEventListener("DOMContentLoaded", () => {
-    showTask();
-  });
+
+  const action = skillActions[skill] || "Do";
+  document.getElementById("task-overlay").innerText = `${action} ${goal} ${task}`;
+  updateProgressUI();
 }
 
-// 🧠 Global state for tracking progress
-let progress = 0;
-let goal = 100;
-
+// ===== Progress Tracking =====
 function incrementProgress() {
   if (progress < goal) {
     progress++;
@@ -42,14 +39,22 @@ function incrementProgress() {
   }
 }
 
-function scanChatForProgress() {
-  if (!A1lib.alt1) return; // Alt1 not running
+function updateProgressUI() {
+  document.getElementById("task-progress").innerText = `${progress}/${goal}`;
+  const bar = document.getElementById("progressbar");
+  if (bar) {
+    bar.style.width = `${(progress / goal) * 100}%`;
+  }
+}
 
-  const chat = A1lib.getChatboxData(); // 🗨️ read RS chat text
+// ===== Chat Parser for Passive XP Detection =====
+function scanChatForProgress() {
+  if (!A1lib.alt1) return;
+
+  const chat = A1lib.getChatboxData();
   if (!chat?.length) return;
 
   const recent = chat.slice(-5).map(line => line.text.toLowerCase());
-
   for (const line of recent) {
     if (
       line.includes("you gain") ||
@@ -65,18 +70,12 @@ function scanChatForProgress() {
   }
 }
 
-function updateProgressUI() {
-  document.getElementById("task-progress").innerText = `${progress}/${goal}`;
+// ===== Initialize App =====
+document.addEventListener("DOMContentLoaded", () => {
+  showTask(); // generate initial task
+  setInterval(scanChatForProgress, 3000); // passive tracking
+});
 
-  const bar = document.getElementById("progressbar");
-  if (bar) {
-    bar.style.width = `${(progress / goal) * 100}%`;
-  }
-}
-
-// ✅ Call showTask once on page load
-document.addEventListener("DOMContentLoaded", showTask);
-
-// 🌐 Make functions available to UI or Alt1
+// ===== Global Exports for UI =====
 window.showTask = showTask;
 window.incrementProgress = incrementProgress;
