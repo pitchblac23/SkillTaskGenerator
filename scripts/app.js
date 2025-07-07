@@ -1,4 +1,4 @@
-//const A1lib = require("alt1/base");
+const A1lib = require("alt1/base");
 
 // ===== Skill & Task Definitions =====
 const skillActions = {
