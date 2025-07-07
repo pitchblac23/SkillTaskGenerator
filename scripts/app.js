@@ -1,5 +1,3 @@
-//const A1lib = require("alt1/base");
-
 // ===== Skill & Task Definitions =====
 const skillActions = {
   Woodcutting: "Chop",
@@ -47,33 +45,9 @@ function updateProgressUI() {
   }
 }
 
-// ===== Chat Parser for Passive XP Detection =====
-function scanChatForProgress() {
-  if (!A1lib.alt1) return;
-
-  const chat = A1lib.getChatboxData();
-  if (!chat?.length) return;
-
-  const recent = chat.slice(-5).map(line => line.text.toLowerCase());
-  for (const line of recent) {
-    if (
-      line.includes("you gain") ||
-      line.includes("xp") ||
-      line.includes("you catch") ||
-      line.includes("you chop") ||
-      line.includes("you mine")
-    ) {
-      console.log("📥 Chat Match:", line);
-      incrementProgress();
-      break;
-    }
-  }
-}
-
 // ===== Initialize App =====
 document.addEventListener("DOMContentLoaded", () => {
   showTask(); // generate initial task
-  setInterval(scanChatForProgress, 3000); // passive tracking
 });
 
 // ===== Global Exports for UI =====
