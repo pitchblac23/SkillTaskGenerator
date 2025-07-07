@@ -1,14 +1,14 @@
 const skillActions = {
+  // Add more if you include new skills later
   Woodcutting: "Chop",
   Fishing: "Catch",
   Mining: "Mine",
-  // Add more if you include new skills later
 };
 
 const skillTasks = {
-  Woodcutting: ["choking ivy", "yew trees"],
-  Fishing: ["Fish sharks at Menaphos", "Try barbarian fishing at Otto's Grotto"],
-  Mining: ["Mine Seren Stones in Prifddinas", "Banite rocks in Fremennik"]
+  Woodcutting: ["Trees", "Oak Trees", "Willow Trees", "Teak Trees", "Maple Trees", "Acadia Trees", "Mahogany Trees", "Choking Ivy", "Yew Trees", "Magic Trees", "Elder Trees"],
+  Fishing: ["Sharks", "Shrimps"],
+  Mining: ["Coal Rocks", "Runeite Rocks"]
 };
 
 function showTask() {
@@ -16,7 +16,7 @@ function showTask() {
   const tasks = skillTasks[skill];
   const task = tasks[Math.floor(Math.random() * tasks.length)];
 
-  // Add a randomized quantity between 10 and 100 (you can tweak this per skill)
+  // Add a randomized quantity between 100 and 400 (you can tweak this per skill)
   const quantity = Math.floor(Math.random() * 301) + 100;
   
   const action = skillActions[skill] || "Do"; // fallback if not defined
