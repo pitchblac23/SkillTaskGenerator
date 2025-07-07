@@ -1,6 +1,6 @@
 {
   "appName": "Skill Task Generator",
-  "description": "Generates skill tasks and tracks progress.",
+  "description": "Generates skill tasks.",
   "appUrl": "./index.html",
   "configUrl": "./appconfig.json",
   "iconUrl": "./assets/icon.png",
@@ -10,7 +10,7 @@
   "minHeight": 180,
   "maxWidth": 1000,
   "maxHeight": 1000,
-  "requestHandlers": [],
-  "activators": [],
-  "permissions": "pixel, gamestate, overlay"
+  "requestHandlers": [ ],
+  "activators": [ ],
+  "permissions": "pixel,overlay"
 }
