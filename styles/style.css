@@ -48,8 +48,8 @@ body {
 
 #task-overlay {
   position: absolute;
-  top: -104px;               /* adjust based on layout */
-  left: 51%;
+  top: 0px;               /* adjust based on layout */
+  left: inherit;
   transform: translateX(-50%);
   white-space: nowrap;
   text-align: center;
@@ -62,8 +62,8 @@ body {
 
 #task-progress {
   position: absolute;
-  top: 50px;           /* Adjust based on bar placement */
-  left: 200px;
+  top: -72px;           /* Adjust based on bar placement */
+  left: inherit;
   transform: translate(-50%, -50%);
   font-size: 16px;
   color: #f1eacb;
