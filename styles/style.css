@@ -12,57 +12,20 @@ body {
   background-image: url('../assets/button.jpg');
   background-size: cover;
   background-position: center;
-  width: 200px;
+  width: 500px;
   height: 50px;
   border: none;
   color: #f1eacb;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 38px;
   text-shadow: 0 0 3px #000;
   cursor: pointer;
   font-family: 'Segoe UI', sans-serif;
 }
 
 .button:hover {
-  filter: brightness(1.1);
+  filter: brightness(1.2);
   transform: scale(1.02);
-}
-
-#task-container {
-  position: absolute;
-  top: 90px;
-  right: center;
-  width: 400px;
-}
-
-#task-bg {
-  width: 100%;
-  border-radius: 6px;
-}
-
-#task-overlay {
-  position: absolute;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -30%);
-  width: 90%;
-  text-align: center;
-  font-size: 18px;
-  font-weight: bold;
-  color: #f1eacb;
-  text-shadow: 0 0 4px #000;
-  pointer-events: none;
-}
-
-#task-progress {
-  position: absolute;
-  top: 81px;           /* Adjust based on bar placement */
-  left: 182px;
-  font-size: 16px;
-  color: #f1eacb;
-  font-weight: bold;
-  text-shadow: 0 0 3px #000;
-  pointer-events: none;
 }
 
 #controls {
@@ -74,3 +37,37 @@ body {
   gap: 10px;
 }
 
+#task-container {
+  position: absolute;
+  top: 300%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px; /* or match your image width */
+  height: auto;
+}
+
+#task-overlay {
+  position: absolute;
+  top: -104px;               /* adjust based on layout */
+  left: 51%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  text-align: center;
+  font-size: 40px;
+  color: #fff1b4;
+  font-weight: bold;
+  text-shadow: 0 0 3px #000;
+  pointer-events: none;
+}
+
+#task-progress {
+  position: absolute;
+  top: 50px;           /* Adjust based on bar placement */
+  left: 200px;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  color: #f1eacb;
+  font-weight: bold;
+  text-shadow: 0 0 3px #000;
+  pointer-events: none;
+}
