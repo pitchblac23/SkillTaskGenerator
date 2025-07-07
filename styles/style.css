@@ -1,0 +1,76 @@
+body {
+  position: relative;
+  background-image: url('../assets/background.jpg'); /* Add your image in the assets folder */
+  background-size: 100%;
+  background-position: center;
+  background-attachment: fixed;
+  color: #f0f0f0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.button {
+  background-image: url('../assets/button.jpg');
+  background-size: cover;
+  background-position: center;
+  width: 200px;
+  height: 50px;
+  border: none;
+  color: #f1eacb;
+  font-weight: bold;
+  font-size: 16px;
+  text-shadow: 0 0 3px #000;
+  cursor: pointer;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.button:hover {
+  filter: brightness(1.1);
+  transform: scale(1.02);
+}
+
+#task-container {
+  position: absolute;
+  top: 90px;
+  right: center;
+  width: 400px;
+}
+
+#task-bg {
+  width: 100%;
+  border-radius: 6px;
+}
+
+#task-overlay {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -30%);
+  width: 90%;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #f1eacb;
+  text-shadow: 0 0 4px #000;
+  pointer-events: none;
+}
+
+#task-progress {
+  position: absolute;
+  top: 81px;           /* Adjust based on bar placement */
+  left: 182px;
+  font-size: 16px;
+  color: #f1eacb;
+  font-weight: bold;
+  text-shadow: 0 0 3px #000;
+  pointer-events: none;
+}
+
+#controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
+  gap: 10px;
+}
+
