@@ -30,8 +30,8 @@ body {
 
 #button-box {
   position: absolute;
-  bottom: 500px;
-  left: 50%;
+  bottom: -104px;
+  left: 51%;
   transform: translateX(-50%);
   display: flex;
   gap: 15px;
@@ -61,12 +61,12 @@ body {
 
 #task-overlay {
   position: absolute;
-  top: 0px;               /* adjust based on layout */
+  top: 155px;               /* adjust based on layout */
   left: inherit;
   transform: translateX(-50%);
   white-space: nowrap;
   text-align: center;
-  font-size: 40px;
+  font-size: 30px;
   color: #fff1b4;
   font-weight: bold;
   text-shadow: 0 0 3px #000;
@@ -75,7 +75,7 @@ body {
 
 #task-progress {
   position: absolute;
-  top: -72px;           /* Adjust based on bar placement */
+  top: 128px;           /* Adjust based on bar placement */
   left: inherit;
   transform: translate(-50%, -50%);
   font-size: 16px;
